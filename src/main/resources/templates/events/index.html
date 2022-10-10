@@ -4,10 +4,16 @@
 <body class="container">
 <header th:replace="fragments :: header"></header>
 
-<ul>
-    <th:block th:each="event : ${events}">
-        <li th:text="${event}"></li>
-    </th:block>
-</ul>
+<table class="table table-striped">
+    <head>
+        <tr>
+            <th>Name</th>
+        </tr>
+    </head>
+    <tr th:each="event : ${events}">
+        <td th:text="${event}"></td>
+    </tr>
+</table>
+
 </body>
 </html>
