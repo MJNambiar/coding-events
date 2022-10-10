@@ -9,11 +9,15 @@
 <table class="table table-striped">
     <head>
         <tr>
-            <th>Name</th>
+            <th>Event Name</th>
+            <th>Description</th>
+            <th>Address</th>
         </tr>
     </head>
     <tr th:each="event : ${events}">
-        <td th:text="${event}"></td>
+        <td th:text="${event.key}"></td>
+        <td th:text="${event.value}"></td>
+        <td th:fragment="address">1234 5th Street</td>
     </tr>
 </table>
 
