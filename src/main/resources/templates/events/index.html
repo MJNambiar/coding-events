@@ -7,13 +7,15 @@
 <nav th:replace="fragments :: navigation"></nav>
 
 <table class="table table-striped">
-    <head>
+    <thead>
         <tr>
             <th>Name</th>
+            <th>Description</th>
         </tr>
-    </head>
+    </thead>
     <tr th:each="event : ${events}">
-        <td th:text="${event}"></td>
+        <td th:text="${event.name}"></td>
+        <td th:text="${event.description}"></td>
     </tr>
 </table>
 
