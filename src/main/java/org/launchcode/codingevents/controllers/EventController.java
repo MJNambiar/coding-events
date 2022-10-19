@@ -4,7 +4,10 @@ import org.launchcode.codingevents.data.EventData;
 import org.launchcode.codingevents.models.Event;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 
 @Controller
@@ -28,7 +31,14 @@ public class EventController {
 
     //lives at /events/create (handles different types of requests so okay to have same path for GET and POST
     @PostMapping("create")
-    public String createEvent(@ModelAttribute Event newEvent){
+    public String createEvent(@ModelAttribute @Valid Event newEvent, Errors errors, Model model){
+
+        if(errors.hasErrors()){
+            model.addAttribute("title", "Create Event");
+            model.addAttribute("errorMsg", "Bad Data");
+            return "events/create";
+        }
+
         EventData.add(newEvent);
         return "redirect:";
     }
